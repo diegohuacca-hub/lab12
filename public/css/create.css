@@ -1,0 +1,496 @@
+/* Estilos para el formulario de edición de publicaciones */
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4cc9f0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --success-color: #4bb543;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --border-radius: 12px;
+    --box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    --box-shadow-hover: 0 15px 30px rgba(0,0,0,0.15);
+    --transition: all 0.3s ease;
+}
+
+/* Estilos base */
+.post-edit-body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--dark-color);
+    padding: 40px 0;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.post-edit-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Tarjeta del formulario */
+.post-edit-card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    background-color: white;
+    transition: var(--transition);
+    margin-bottom: 30px;
+}
+
+.post-edit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+/* Encabezado de la tarjeta */
+.post-edit-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 25px 30px;
+    border-bottom: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-edit-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    animation: post-shimmer 3s infinite;
+}
+
+@keyframes post-shimmer {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.post-edit-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.post-edit-icon {
+    margin-right: 12px;
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+/* Cuerpo de la tarjeta */
+.post-edit-body-content {
+    padding: 35px;
+}
+
+/* Grupos de formulario */
+.post-edit-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.post-edit-label {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+    display: block;
+    font-size: 1.05rem;
+}
+
+.post-edit-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 16px;
+    transition: var(--transition);
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    background-color: #fff;
+    line-height: 1.5;
+}
+
+.post-edit-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(76, 201, 240, 0.25);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.post-edit-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+/* Estados de validación */
+.post-edit-control.is-valid {
+    border-color: var(--success-color);
+    box-shadow: 0 0 0 0.25rem rgba(75, 181, 67, 0.25);
+}
+
+.post-edit-control.is-invalid {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+/* Área de texto específica */
+.post-edit-textarea {
+    min-height: 220px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* Contadores de caracteres */
+.post-edit-character-count {
+    font-size: 0.875rem;
+    text-align: right;
+    margin-top: 8px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.post-edit-character-count.normal {
+    color: #6c757d;
+}
+
+.post-edit-character-count.warning {
+    color: var(--warning-color);
+    font-weight: 600;
+}
+
+.post-edit-character-count.danger {
+    color: var(--danger-color);
+    font-weight: 700;
+}
+
+/* Botón de envío */
+.post-edit-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 8px;
+    padding: 14px 35px;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.post-edit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: var(--transition);
+}
+
+.post-edit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.post-edit-btn:hover::before {
+    left: 100%;
+}
+
+.post-edit-btn:active {
+    transform: translateY(0);
+}
+
+.post-edit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(76, 201, 240, 0.5);
+}
+
+.post-edit-btn:disabled {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.post-edit-btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.post-edit-btn:disabled:hover::before {
+    left: -100%;
+}
+
+.post-edit-btn-icon {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+/* Efectos de carga */
+.post-edit-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.post-edit-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: post-spin 1s linear infinite;
+}
+
+@keyframes post-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Sección de vista previa */
+.post-edit-preview-section {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #e9ecef;
+}
+
+.post-edit-preview-title {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.post-edit-preview-icon {
+    margin-right: 10px;
+    opacity: 0.8;
+}
+
+.post-edit-preview-content {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.post-edit-preview-content:hover {
+    background: linear-gradient(135deg, #f1f3f5, #e9ecef);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.post-edit-preview-placeholder {
+    color: #6c757d;
+    font-style: italic;
+    margin: 0;
+    opacity: 0.7;
+}
+
+/* Mensajes de validación */
+.post-edit-validation-message {
+    font-size: 0.875rem;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.post-edit-validation-message.valid {
+    color: var(--success-color);
+}
+
+.post-edit-validation-message.invalid {
+    color: var(--danger-color);
+}
+
+.post-edit-validation-icon {
+    margin-right: 6px;
+    font-size: 0.8rem;
+}
+
+/* Alertas personalizadas */
+.post-edit-alert {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1050;
+    min-width: 320px;
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: none;
+    padding: 15px 20px;
+    animation: post-slide-in 0.3s ease-out;
+}
+
+@keyframes post-slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.post-edit-alert.success {
+    background: linear-gradient(135deg, var(--success-color), #3a9c35);
+    color: white;
+}
+
+.post-edit-alert.error {
+    background: linear-gradient(135deg, var(--danger-color), #c82333);
+    color: white;
+}
+
+/* Personalización de la barra de scroll para textarea */
+.post-edit-textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.post-edit-textarea::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.post-edit-textarea::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.post-edit-textarea::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Estados de enfoque mejorados */
+.post-edit-control:focus {
+    background-color: #fff;
+}
+
+/* Efectos de transición para todos los elementos interactivos */
+.post-edit-control,
+.post-edit-btn,
+.post-edit-preview-content {
+    transition: var(--transition);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-edit-body-content {
+        padding: 25px 20px;
+    }
+    
+    .post-edit-header {
+        padding: 20px;
+    }
+    
+    .post-edit-title {
+        font-size: 1.5rem;
+    }
+    
+    .post-edit-btn {
+        width: 100%;
+        padding: 16px 30px;
+        margin-top: 10px;
+    }
+    
+    .post-edit-preview-content {
+        padding: 20px;
+    }
+    
+    .post-edit-container {
+        padding: 0 15px;
+    }
+    
+    .post-edit-alert {
+        min-width: calc(100% - 30px);
+        left: 15px;
+        right: 15px;
+        top: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .post-edit-body {
+        padding: 20px 0;
+    }
+    
+    .post-edit-title {
+        font-size: 1.35rem;
+    }
+    
+    .post-edit-icon {
+        font-size: 1.25rem;
+    }
+    
+    .post-edit-preview-title {
+        font-size: 1.15rem;
+    }
+    
+    .post-edit-control {
+        padding: 12px 14px;
+    }
+    
+    .post-edit-preview-content {
+        padding: 15px;
+    }
+}
+
+/* Utilidades adicionales */
+.post-edit-text-muted {
+    color: #6c757d !important;
+}
+
+.post-edit-text-success {
+    color: var(--success-color) !important;
+}
+
+.post-edit-text-danger {
+    color: var(--danger-color) !important;
+}
+
+.post-edit-mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.post-edit-mt-3 {
+    margin-top: 1rem !important;
+}
+
+/* Efectos de sombra para elementos interactivos */
+.post-edit-card,
+.post-edit-btn,
+.post-edit-preview-content,
+.post-edit-alert {
+    box-shadow: var(--box-shadow);
+}
+
+.post-edit-card:hover,
+.post-edit-btn:hover,
+.post-edit-preview-content:hover {
+    box-shadow: var(--box-shadow-hover);
+}

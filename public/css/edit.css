@@ -1,0 +1,414 @@
+/* Estilos para el formulario de edición de publicaciones */
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4cc9f0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --success-color: #4bb543;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --border-radius: 12px;
+    --box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    --box-shadow-hover: 0 15px 30px rgba(0,0,0,0.15);
+    --transition: all 0.3s ease;
+}
+
+/* Estilos base mejorados */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--dark-color);
+    padding: 40px 0;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Título principal */
+h1 {
+    color: var(--dark-color);
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+/* Formulario con tarjeta */
+form {
+    background: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+form:hover {
+    box-shadow: var(--box-shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* Grupos de formulario */
+.mb-3 {
+    margin-bottom: 25px !important;
+    position: relative;
+}
+
+/* Etiquetas mejoradas */
+.form-label {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+    display: block;
+    font-size: 1.05rem;
+    transition: var(--transition);
+}
+
+/* Campos de formulario mejorados */
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 16px;
+    transition: var(--transition);
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    background-color: #fff;
+    line-height: 1.5;
+    position: relative;
+}
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(76, 201, 240, 0.25);
+    outline: none;
+    transform: translateY(-1px);
+    background-color: #fff;
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+/* Textarea específico */
+textarea.form-control {
+    min-height: 220px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* Botón primario mejorado */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 8px;
+    padding: 14px 35px;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(76, 201, 240, 0.5);
+}
+
+/* Estados de validación */
+.form-control.is-valid {
+    border-color: var(--success-color);
+    box-shadow: 0 0 0 0.25rem rgba(75, 181, 67, 0.25);
+}
+
+.form-control.is-invalid {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+/* Contadores de caracteres (opcional) */
+.character-count {
+    font-size: 0.875rem;
+    text-align: right;
+    margin-top: 8px;
+    font-weight: 500;
+    transition: var(--transition);
+    color: #6c757d;
+}
+
+.character-count.warning {
+    color: var(--warning-color);
+    font-weight: 600;
+}
+
+.character-count.danger {
+    color: var(--danger-color);
+    font-weight: 700;
+}
+
+/* Mensajes de validación */
+.validation-message {
+    font-size: 0.875rem;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.validation-message.valid {
+    color: var(--success-color);
+}
+
+.validation-message.invalid {
+    color: var(--danger-color);
+}
+
+.validation-icon {
+    margin-right: 6px;
+    font-size: 0.8rem;
+}
+
+/* Efectos de carga para el botón */
+.btn-primary.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-primary.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Personalización de la barra de scroll para textarea */
+textarea.form-control::-webkit-scrollbar {
+    width: 8px;
+}
+
+textarea.form-control::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+textarea.form-control::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+textarea.form-control::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Efectos de enfoque mejorados para labels */
+.form-label:has(+ .form-control:focus) {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    form {
+        padding: 25px 20px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: 25px;
+    }
+    
+    .btn-primary {
+        width: 100%;
+        padding: 16px 30px;
+        margin-top: 15px;
+    }
+    
+    .form-control {
+        padding: 12px 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.5rem;
+        padding-bottom: 12px;
+    }
+    
+    h1::after {
+        width: 60px;
+        height: 3px;
+    }
+    
+    form {
+        padding: 20px 15px;
+        margin: 0 -5px;
+    }
+    
+    .mb-3 {
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Efectos de transición para todos los elementos interactivos */
+.form-control,
+.btn-primary,
+form {
+    transition: var(--transition);
+}
+
+/* Utilidades adicionales */
+.text-muted {
+    color: #6c757d !important;
+}
+
+.text-success {
+    color: var(--success-color) !important;
+}
+
+.text-danger {
+    color: var(--danger-color) !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mt-3 {
+    margin-top: 1rem !important;
+}
+
+/* Efectos de sombra mejorados */
+form,
+.btn-primary {
+    box-shadow: var(--box-shadow);
+}
+
+form:hover,
+.btn-primary:hover {
+    box-shadow: var(--box-shadow-hover);
+}
+
+/* Estados deshabilitados */
+.form-control:disabled {
+    background-color: #e9ecef;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-primary:disabled {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-primary:disabled:hover {
+    transform: none;
+    box-shadow: none;
+    background: linear-gradient(135deg, #6c757d, #495057);
+}
+
+.btn-primary:disabled:hover::before {
+    left: -100%;
+}
+
+/* Indicadores visuales para campos requeridos */
+.form-label:after {
+    content: ' *';
+    color: var(--danger-color);
+}
+
+/* Mejoras de accesibilidad - alto contraste */
+@media (prefers-contrast: high) {
+    .form-control {
+        border-width: 3px;
+    }
+    
+    .form-control:focus {
+        border-width: 3px;
+    }
+}
+
+/* Mejoras para modo reducido de movimiento */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition: all 0.1s ease;
+    }
+    
+    .btn-primary::before {
+        display: none;
+    }
+}
