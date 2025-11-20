@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NotaController;
-
+use App\Http\Controllers\ActividadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,7 +74,16 @@ Route::middleware(['auth'])->group(function () {
 
     // Eliminar nota
     Route::delete('/notas/{id}', [NotaController::class, 'destroy'])->name('notas.destroy');
-});
 
+    Route::get('/actividades', [ActividadController::class, 'index'])->name('actividades.index');
+    Route::get('/actividades/create/{recordatorio_id}', [ActividadController::class, 'create'])->name('actividades.create');
+    Route::post('/actividades', [ActividadController::class, 'store'])->name('actividades.store');
+    Route::get('/actividades/{id}/edit', [ActividadController::class, 'edit'])->name('actividades.edit');
+    Route::put('/actividades/{id}', [ActividadController::class, 'update'])->name('actividades.update');
+    Route::delete('/actividades/{id}', [ActividadController::class, 'destroy'])->name('actividades.destroy');
+    Route::delete('/notas/{id}', [NotaController::class, 'destroy'])->name('notas.destroy');
+
+
+});
 
 
